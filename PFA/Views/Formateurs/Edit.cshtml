@@ -1,0 +1,68 @@
+﻿@model PFA.Models.Formateur
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Modifier le Formateur</title>
+</head>
+<body class="container-creation">
+    <div class="a">
+        <h4>Modifier un Formateur</h4>
+        <form class="creation" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label">Nom</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Prenom" class="control-label">Prénom</label>
+                <input asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateNaissance" class="control-label">Date de Naissance</label>
+                <input asp-for="DateNaissance" class="form-control" />
+                <span asp-validation-for="DateNaissance" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NumTel" class="control-label">Numéro de Téléphone</label>
+                <input asp-for="NumTel" class="form-control" />
+                <span asp-validation-for="NumTel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Biographie" class="control-label">Biographie</label>
+                <input asp-for="Biographie" class="form-control" />
+                <span asp-validation-for="Biographie" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <div class="container mt-3">
+        <a asp-action="Index" class="btn btn-retour">Retour à la liste</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>

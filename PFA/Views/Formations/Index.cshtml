@@ -1,0 +1,114 @@
+﻿@model IEnumerable<PFA.Models.Formation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Liste des Formations</title>
+    <style>
+        .container {
+            overflow-x: auto;
+        }
+
+        .tablex th, .tablex td {
+            white-space: nowrap;
+        }
+
+        .tablex img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .btn {
+            color: white;
+        }
+
+        .btn-action {
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-between mb-3">
+            <div class="col-auto">
+                <h3 class="tit mt-4">Liste des Formations</h3>
+            </div>
+            <div class="col-auto">
+                @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                {
+                    <a href="@Url.Action("Create", "Formations")" class="btn btn-add btn-lg">Ajouter Formation</a>
+                }
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped tablex">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Durée</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Image</th>
+                        <th>Catégorie</th>
+                        <th>Formateur</th>
+                        <th>Modules</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var formation in Model)
+                    {
+                        <tr>
+                            <td>@formation.NomFormation</td>
+                            <td>@formation.Duree</td>
+                            <td>@formation.Description</td>
+                            <td>@formation.Prix</td>
+                            <td>
+                                <img src="@Url.Content(formation.ImgFormationPath)" alt="@formation.NomFormation" />
+                            </td>
+                            <td>@formation.Categorie.NomCategorie</td>
+                            <td>@formation.Formateur.Nom</td>
+                            <td>
+                                <ul>
+                                    @foreach (var module in formation.Modules)
+                                    {
+                                        <li>@module.NomModule</li>
+                                    }
+                                </ul>
+                            </td>
+                            <td>
+                                @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                                {
+                                    <a href="@Url.Action("Edit", "Formations", new { id = formation.IdFormation })" class="btn btn-item btn-sm">Editer</a>
+
+                                }
+                                @if (User.IsInRole("Admin") || User.IsInRole("Formateur") || User.IsInRole("Apprenant"))
+                                {
+                                    <a href="@Url.Action("Details", "Formations", new { id = formation.IdFormation })" class="btn btn-item btn-sm">Details</a>
+
+                                }
+
+                                @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                                {
+                                    <a href="@Url.Action("Delete", "Formations", new { id = formation.IdFormation })" class="btn btn-item btn-sm">Supprimer</a>
+
+                                }
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

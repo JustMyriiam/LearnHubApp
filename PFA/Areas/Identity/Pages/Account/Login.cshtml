@@ -1,0 +1,76 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<style>
+    #account {
+        padding: 40px 30px;
+        gap: 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 123, 255, 0.5);
+        background-color: #ADD8E6;
+        width: 80%; 
+        max-width: 500px;
+        margin: 0 auto; 
+        margin-top: 20px;
+    }
+
+    #account input[type="email"],
+    #account input[type="password"] {
+        border-radius: 20px;
+        margin-bottom: 15px; 
+    }
+
+    #account button[type="submit"] {
+        border-radius: 20px;
+        background-color: var(--orange);
+        border-color: var(--orange);
+    }
+
+    #account h2 {
+        color: var(--orange);
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="account" method="post">
+                <h2>S'authentifier</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="nom d'utilisateur" aria-required="true" placeholder="Adresse e-mail" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="mot de passe actuel" aria-required="true" placeholder="Mot de passe" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">S'authentifier</button>
+                </div>
+                <div>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Inscrivez-vous en tant que nouvel utilisateur</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

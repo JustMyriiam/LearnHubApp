@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PFA.Models.Categorie>
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Liste des Catégories</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-between mb-3">
+            <div class="col-auto">
+                <h3 class="mt-4">Liste des Catégories</h3>
+            </div>
+            <div class="col-auto">
+                @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                {
+                <a href="@Url.Action("Create", "Categories")" class="btn btn-add btn-lg">Create New</a>
+                }
+            </div>
+        </div>
+        <table class="table table-striped tablex">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.NomCategorie)</th>
+                    <th>@Html.DisplayNameFor(model => model.DescriptionCat)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.NomCategorie)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DescriptionCat)</td>
+                        <td>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                            {
+                          <a href="@Url.Action("Edit", "Categories", new { id = item.IdCategorie })" class="btn btn-item btn-sm">Edit</a>
+
+                            }
+
+                            <a href="@Url.Action("Details", "Categories", new { id = item.IdCategorie })" class="btn btn-item btn-sm">Details</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Formateur"))
+                            {
+                             <a href="@Url.Action("Delete", "Categories", new { id = item.IdCategorie })" class="btn btn-item btn-sm">Delete</a>
+
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PFA.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container container-home">
+
+        <div class="container-fluid row accueil justify-content-around align-items-center">
+            <div class="col-md-6">
+                <img height="500" src="/images/20.jpeg" class="img-fluid" alt="Welcome Image">
+            </div>
+            <div class="col-md-6">
+                <div class="accueil-text">
+                    <h2 id="acceuil-tit">Bienvenue sur LearnHub</h2>
+                    <p id="acceuil-p">Explorez et apprenez avec notre plateforme éducative.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row apropos">
+            <div class="col-md-12">
+                <h3 id="apropos-titre">À propos de LearnHub</h3>
+                <p>LearnHub est une plateforme d'apprentissage en ligne qui offre une variété de cours et de ressources éducatives. Que vous soyez débutant ou expérimenté, notre mission est de vous aider à atteindre vos objectifs d'apprentissage.</p>
+            </div>
+        </div>
+
+        <hr class="ligne-hor">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="form-c col-md-6">
+                    <h3 id="form-titre" class="text-center">Commencez votre aventure d'apprentissage</h3>
+                    <p class="text-center">Rejoignez la communauté LearnHub et commencez votre voyage d'apprentissage dès maintenant. Inscrivez-vous pour accéder à des fonctionnalités supplémentaires et suivre votre progression.</p>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="name">Nom*</label>
+                            <input type="text" class="form-control rounded-pill" id="name" name="name" required placeholder="Entrez votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Prénom*</label>
+                            <input type="text" class="form-control rounded-pill" id="firstname" name="firstname" required placeholder="Entrez votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Numéro de téléphone*</label>
+                            <input type="tel" class="form-control rounded-pill" id="phone" name="phone" required placeholder="Entrez votre numéro de téléphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail*</label>
+                            <input type="email" class="form-control rounded-pill" id="email" name="email" required placeholder="Entrez votre e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block rounded-pill">Soumettre</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

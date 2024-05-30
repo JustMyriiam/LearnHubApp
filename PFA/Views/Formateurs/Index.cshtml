@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PFA.Models.Formateur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Liste des Formateurs</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-between mb-3">
+            <div class="col-auto">
+                <h3 class="mt-4">Liste des Formateurs</h3>
+            </div>
+            <div class="col-auto">
+                <a href="@Url.Action("Create", "Formateurs")" class="btn btn-add btn-lg">Ajouter Formateur</a>
+            </div>
+        </div>
+        <table class="table table-striped tablex">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de Naissance</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Email</th>
+                    <th>Biographie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var formateur in Model)
+                {
+                    <tr>
+                        <td>@formateur.Nom</td>
+                        <td>@formateur.Prenom</td>
+                        <td>@formateur.DateNaissance</td>
+                        <td>@formateur.NumTel</td>
+                        <td>@formateur.Email</td>
+                        <td>@formateur.Biographie</td>
+                        <td>
+                            
+                            <a href="@Url.Action("Edit", "Formateurs", new { id = formateur.Id })" class="btn btn-item btn-sm">Éditer</a>
+                            <a href="@Url.Action("Details", "Formateurs", new { id = formateur.Id })" class="btn btn-item btn-sm">Détails</a>
+                            <a href="@Url.Action("Delete", "Formateurs", new { id = formateur.Id })" class="btn btn-item btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

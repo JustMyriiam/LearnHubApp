@@ -1,0 +1,50 @@
+﻿@model PFA.Models.Module
+@{
+    ViewData["Title"] = "Edit";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Edit Module</title>
+</head>
+<body class="container-creation">
+    <div class="a">
+        <h4>Edit Module</h4>
+        <form class="creation" asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdModule" />
+
+            <div class="form-group">
+                <label asp-for="NomModule" class="control-label">Nom de Module</label>
+                <input asp-for="NomModule" class="form-control" />
+                <span asp-validation-for="NomModule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionMod" class="control-label">Description du Module</label>
+                <input asp-for="DescriptionMod" class="form-control" />
+                <span asp-validation-for="DescriptionMod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFormation" class="control-label">Formation</label>
+                <select asp-for="IdFormation" class="form-control" asp-items="ViewBag.IdFormation"></select>
+                <span asp-validation-for="IdFormation" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <div class="container mt-3">
+        <a asp-action="Index" class="btn btn-retour">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

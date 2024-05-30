@@ -1,0 +1,63 @@
+﻿@model PFA.Models.Formateur
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Formateur Details</title>
+</head>
+
+<body class="details-container">
+    <div class="module-details">
+        <h4>Formateur {@Model.Id}</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Prenom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Prenom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateNaissance)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NumTel)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NumTel)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Biographie)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Biographie)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="navigation-links">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-edit">Edit</a>
+        <a asp-action="Index" class="btn btn-back">Back to List</a>
+    </div>
+</body>

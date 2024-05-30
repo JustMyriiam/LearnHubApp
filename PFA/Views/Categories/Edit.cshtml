@@ -1,0 +1,44 @@
+﻿@model PFA.Models.Categorie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Modifier la Catégorie</title>
+</head>
+<body class="container-creation">
+    <div class="a">
+        <h4>Modifier une Catégorie</h4>
+        <form class="creation" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCategorie" />
+
+            <div class="form-group">
+                <label asp-for="NomCategorie" class="control-label">Nom de Catégorie</label>
+                <input asp-for="NomCategorie" class="form-control" />
+                <span asp-validation-for="NomCategorie" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DescriptionCat" class="control-label">Description de la Catégorie</label>
+                <textarea asp-for="DescriptionCat" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="DescriptionCat" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <div class="container mt-3">
+        <a asp-action="Index" class="btn btn-retour">Retour à la liste</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>

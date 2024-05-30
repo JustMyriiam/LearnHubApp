@@ -1,0 +1,64 @@
+﻿@model PFA.Models.Formation
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Create Formation</title>
+</head>
+
+<body class="container-creation">
+    <div class="a">
+        <h4>Ajouter une Formation</h4>
+        <form asp-action="Create" class="creation" id="formationForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomFormation" class="control-label">Nom Formation</label>
+                <input asp-for="NomFormation" class="form-control" />
+                <span asp-validation-for="NomFormation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duree" class="control-label">Durée</label>
+                <input asp-for="Duree" class="form-control" />
+                <span asp-validation-for="Duree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prix" class="control-label">Prix</label>
+                <input asp-for="Prix" class="form-control" />
+                <span asp-validation-for="Prix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImgFormationPath" class="control-label">Image</label>
+                <input asp-for="ImgFormationPath" class="form-control" />
+                <span asp-validation-for="ImgFormationPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategorie" class="control-label">Catégorie</label>
+                <select asp-for="IdCategorie" class="form-control" asp-items="ViewBag.IdCategorie"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFormateur" class="control-label">Formateur</label>
+                <select asp-for="IdFormateur" class="form-control" asp-items="ViewBag.IdFormateur"></select>
+            </div>
+            
+
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+    <div class="container mt-3">
+        <a asp-action="Index" class="btn btn-retour">Retour à la liste</a>
+    </div>
+
+
+</body>

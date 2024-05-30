@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PFA.Models.Module>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Liste des Modules</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-between mb-3">
+            <div class="col-auto">
+                <h3 class="mt-4">Liste des Modules</h3>
+            </div>
+            <div class="col-auto">
+                <a href="@Url.Action("Create", "Modules")" class="btn btn-add btn-lg">Ajouter Module</a>
+            </div>
+        </div>
+        <table class="table table-striped tablex">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Description</th>
+                    <th>Formation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.NomModule)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DescriptionMod)</td> <!-- Display DescriptionMod -->
+                        <td>@Html.DisplayFor(modelItem => item.Formation.Description)</td>
+                        <td>
+                            <a href="@Url.Action("Details", "Modules", new { id = item.IdModule })" class="btn btn-item btn-sm">Détails</a>
+                            <a href="@Url.Action("Edit", "Modules", new { id = item.IdModule })" class="btn btn-item btn-sm">Éditer</a>
+                            <a href="@Url.Action("Delete","Modules", new { id = item.IdModule })" class="btn btn-item btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model PFA.Models.Module
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Ajouter des Modules</title>
+</head>
+<body class="container-creation">
+    <div class="a">
+        <h4>Ajouter un Module</h4>
+        <form class="creation" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NomModule" class="control-label">Nom de Module</label>
+                <input asp-for="NomModule" class="form-control" />
+                <span asp-validation-for="NomModule" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DescriptionMod" class="control-label">Description du Module</label>
+                <textarea asp-for="DescriptionMod" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="DescriptionMod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdFormation" class="control-label">Formation Associée</label>
+                <select asp-for="IdFormation" class="form-control" asp-items="ViewBag.IdFormation"></select>
+                <span asp-validation-for="IdFormation" class="text-danger"></span>
+            </div>
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+
+    <div class="container mt-3">
+        <a asp-action="Index" class="btn btn-retour ">Retour à la liste</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>

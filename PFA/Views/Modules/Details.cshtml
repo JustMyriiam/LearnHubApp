@@ -1,0 +1,47 @@
+﻿@model PFA.Models.Module
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Détails du Module</title>
+</head>
+
+<body class="details-container">
+    <div class="module-details">
+        <h4>Module {@Model.IdModule}</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NomModule)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NomModule)
+            </dd>
+            <dt class="col-sm-2">
+                Description du Module
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DescriptionMod)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Formation)
+            </dt>
+            <dd class="col-sm-10">
+                @if (Model.Formation != null)
+                {
+                    @Html.DisplayFor(model => model.Formation.NomFormation)
+                }
+            </dd>
+        </dl>
+    </div>
+
+    <div class="navigation-links">
+        <a asp-action="Index" class="btn btn-back">Retour à la liste</a>
+        <a asp-action="Edit" asp-route-id="@Model?.IdModule" class="btn btn-edit">Modifier</a>
+    </div>
+</body>
